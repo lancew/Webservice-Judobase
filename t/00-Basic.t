@@ -27,10 +27,9 @@ done_testing;
 use Test2::Todo;
 
 my $todo = Test2::Todo->new(reason => 'Not yet implemented');
-    subtest best_results => sub {};
     subtest best_results_2 => sub {};
     subtest best_results_wrl => sub {};
-    subtest birthday_competitors => sub {};
+ 
     subtest contests => sub {};
     subtest contests_statistics => sub {};
     subtest find_id => sub {};

@@ -38,6 +38,26 @@ sub best_results {
     return {error => 'Error retreiving competitor info'}    
 }
 
+sub birthdays_competitors {
+    my $self = shift;
+    my %args = @_;
+
+    return {error => 'min_age parameter is required'} unless defined $args{min_age};
+    my $url = $self->url
+              . 'get_json?params[action]=competitor.birthday_competitors&params[min_age]='
+              . $args{min_age};
+
+    my $ua = LWP::UserAgent->new;
+    my $request = HTTP::Request->new(GET => $url);
+
+    my $response = $ua->request($request);
+
+    return decode_json $response->content
+        if $response->code == 200;
+
+    return {error => 'Error retreiving competitor info'}    
+}
+
 sub info {
     my $self = shift;
     my %args = @_;
