@@ -62,6 +62,28 @@ sub birthdays_competitors {
     return { error => 'Error retreiving competitor info' };
 }
 
+sub contests {
+    my $self = shift;
+    my %args = @_;
+
+    return { error => 'id parameter is required' } unless defined $args{id};
+    my $url
+        = $self->url
+        . 'get_json?params[action]=competitor.contests&params[id_person]='
+        . $args{id};
+
+    my $ua = LWP::UserAgent->new;
+    my $request = HTTP::Request->new( GET => $url );
+
+    my $response = $ua->request($request);
+
+    return decode_json $response->content
+        if $response->code == 200;
+
+    return { error => 'Error retreiving competitor info' };
+
+}
+
 sub info {
     my $self = shift;
     my %args = @_;
