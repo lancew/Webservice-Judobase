@@ -5,7 +5,8 @@ subtest url => sub {
 
     my $url = $api->url;
 
-    is $url, 'http://data.judobase.org/api/', 'Returns the correct default url';
+    is $url, 'http://data.judobase.org/api/',
+        'Returns the correct default url';
 };
 
 subtest status => sub {
@@ -17,10 +18,6 @@ subtest status => sub {
 };
 
 done_testing;
-
-
-
-
 
 =pod
 # Stubs here as paceholders for the methods from PHP app.
