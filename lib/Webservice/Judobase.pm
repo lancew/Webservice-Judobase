@@ -1,7 +1,7 @@
+package Webservice::Judobase;
 use strict;
 use warnings;
 
-package Webservice::Judobase;
 
 # ABSTRACT: This module wraps the www.judobase.org website API.
 # VERSION
@@ -25,7 +25,7 @@ has 'competitor' => (
 );
 
 sub status {
-    my $self    = shift;
+    my ($self)    = @_;
     my $ua      = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $self->url );
 
