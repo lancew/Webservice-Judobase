@@ -1,0 +1,14 @@
+sudo: false
+language: perl
+perl:
+  - "5.22"
+  - "5.20"
+  - "5.18"
+  - "5.16"
+  - "5.14"
+  - "5.12"
+  - "5.10"
+  - "5.8"
+install: cpanm -nq Devel::Cover::Report::Coveralls Moo Test2::Suite~0.000025 Types::Standard
+script: PERL5OPT=-MDevel::Cover prove -lv
+after_success: cover -report coveralls
