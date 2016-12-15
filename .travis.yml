@@ -10,5 +10,5 @@ perl:
   - "5.10"
   - "5.8"
 install: cpanm -nq Devel::Cover::Report::Coveralls Moo Test2::Suite~0.000025 Types::Standard JSON::Tiny
-script: PERL5OPT=-MDevel::Cover prove -lv
+script: PERL5OPT=-MDevel::Cover prove -lvr
 after_success: cover -report coveralls
