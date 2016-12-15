@@ -25,7 +25,7 @@ subtest valid_params => sub {
             'rank_short'  => undef,
             'place'       => '1'
         },
-        {   'name_short'  => undef,
+        {   'name_short'  => 'OG London 2012',
             'year'        => '2012',
             'points'      => '600',
             'sort_by'     => '10-1',
