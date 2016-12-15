@@ -106,6 +106,32 @@ sub contests_statistics {
 
 }
 
+sub fights_statistics {
+    my $self = shift;
+    my %args = @_;
+
+    return { error => 'id parameter is required' } unless defined $args{id};
+
+    my $url
+        = $self->url
+        . 'get_json?params[action]=competitor.fights_statistics&params[id_person]='
+        . $args{id};
+
+    my $ua = LWP::UserAgent->new;
+    my $request = HTTP::Request->new( GET => $url );
+
+    my $response = $ua->request($request);
+
+    if ( $response->code == 200 ) {
+        my $data = decode_json $response->content;
+
+        return $data->[0] if ref $data eq 'ARRAY';
+        return $data;
+    }
+
+    return { error => 'Error retreiving competitor info' };
+}
+
 sub info {
     my $self = shift;
     my %args = @_;
