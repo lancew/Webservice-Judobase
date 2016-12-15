@@ -144,8 +144,12 @@ sub wrl_current {
 
     my $response = $ua->request($request);
 
-    return decode_json $response->content
-        if $response->code == 200;
+    if ( $response->code == 200 ) {
+        my $data = decode_json $response->content;
+
+        return $data->[0] if ref $data eq 'ARRAY';
+        return $data;
+    }
 
     return { error => 'Error retreiving competitor info' };
 }

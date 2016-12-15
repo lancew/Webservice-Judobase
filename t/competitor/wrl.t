@@ -16,16 +16,16 @@ subtest valid_params => sub {
     my $result = $api->competitor->wrl_current( id => 385 );
 
     is $result,
-            [{
-                points         => 2800,
-                place          => 1,
-                id_weight      => 7,
-                age            => 'Seniors',
-                weight         => '+100',
-                ogq_place      => 1,
-                ogq_sum_points => 3150,
-                q_status       => 1,
-            }],
+        {
+        points         => 2800,
+        place          => 1,
+        id_weight      => 7,
+        age            => 'Seniors',
+        weight         => '+100',
+        ogq_place      => 1,
+        ogq_sum_points => 3150,
+        q_status       => 1,
+        },
         'Returns data structure for valid competitor';
 };
 
