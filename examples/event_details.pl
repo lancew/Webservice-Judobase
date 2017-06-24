@@ -5,24 +5,19 @@ use v5.10;
 # This example script was developed with Gaert Claes to support his
 # PHD studies researching the results of IJF elite competitions
 
-use LWP::Simple;               
-use JSON qw( decode_json ); 
+use LWP::Simple;
+use JSON 'decode_json';
+use Webservice::Judobase;
 
 use Data::Dumper;
 $Data::Dumper::Sortkeys = 1;
 
-my $base_url = 'http://data.judobase.org/api/get_json?';
+my $srv = Webservice::Judobase->new;
 my $event_id = $ARGV[0] || 1455;    # 2017 Europeans
 
-my $event = decode_json(
-    get(      $base_url
-            . 'params[action]=general.get_one'
-            . '&params[module]=competition'
-            . '&params[id]='
-            . $event_id
-    )
-);
+my $event = $srv->general->competition(id => $event_id);
 
+my $base_url = 'http://data.judobase.org/api/get_json?';
 my $contests = decode_json(
     get(      $base_url
             . 'params[action]=contest.find'
@@ -35,8 +30,23 @@ my $contests = decode_json(
 
 my %categories;
 
-say
-    'category,round,winner,ijf_id_winner,dob_winner,country_winner,wrl_points_winner,belt_winner,loser,ijf_id_loser,dob_loser,country_loser,wrl_points_loser,belt_loser';
+my $header =
+    join ',',
+    qw/ category
+        round
+        winner
+        ijf_id_winner
+        dob_winner
+        country_winner
+        wrl_points_winner
+        belt_winner
+        loser
+        ijf_id_loser
+        dob_loser
+        country_loser
+        wrl_points_loser
+        belt_loser/;
+say $header;
 
 for ( @{$contests} ) {
     $categories{ $_->{weight} }{ $_->{id_ijf_blue} }++;
@@ -127,3 +137,4 @@ say $event->{title};
 say $event->{year};
 say $event->{country};
 
+1;

@@ -17,6 +17,24 @@ subtest status => sub {
     is $status, 0, 'Returns the correct default url';
 };
 
+subtest competitor_best_results => sub {
+    my $api = $CLASS->new();
+
+    my $results = $api->competitor->best_results(id => 385);
+    
+    is $results->[0]{competition}, 'Grand Slam Paris 2013', 'Returns results OK';
+};
+
+subtest general => sub {
+    my $api = $CLASS->new();
+
+    my $info = $api->general->ping;
+
+warn $info;
+
+    ok 1;
+};
+
 done_testing;
 
 =pod
