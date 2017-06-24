@@ -15,6 +15,9 @@ subtest valid_params => sub {
 
     my $result = $api->competitor->best_results( id => 385 );
 
+    use Data::Dumper;
+    warn Dumper $result;
+
     is $result,
         [
         {   'year'        => '2013',

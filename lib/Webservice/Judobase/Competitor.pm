@@ -1,7 +1,7 @@
+package Webservice::Judobase::Competitor;
+
 use strict;
 use warnings;
-
-package Webservice::Judobase::Competitor;
 
 # ABSTRACT: This module wraps the www.judobase.org website API.
 # VERSION
@@ -20,10 +20,9 @@ has 'url' => (
 );
 
 sub best_results {
-    my $self = shift;
-    my %args = @_;
-
+    my ( $self, %args ) = @_;
     return { error => 'id parameter is required' } unless defined $args{id};
+
     my $url
         = $self->url
         . 'get_json?params[action]=competitor.best_results&params[id_person]='
@@ -41,8 +40,7 @@ sub best_results {
 }
 
 sub birthdays_competitors {
-    my $self = shift;
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     return { error => 'min_age parameter is required' }
         unless defined $args{min_age};
@@ -63,8 +61,7 @@ sub birthdays_competitors {
 }
 
 sub contests {
-    my $self = shift;
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     return { error => 'id parameter is required' } unless defined $args{id};
     my $url
@@ -85,8 +82,7 @@ sub contests {
 }
 
 sub contests_statistics {
-    my $self = shift;
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     return { error => 'id parameter is required' } unless defined $args{id};
     my $url
@@ -107,8 +103,7 @@ sub contests_statistics {
 }
 
 sub fights_statistics {
-    my $self = shift;
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     return { error => 'id parameter is required' } unless defined $args{id};
 
@@ -133,8 +128,7 @@ sub fights_statistics {
 }
 
 sub info {
-    my $self = shift;
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     return { error => 'id parameter is required' } unless defined $args{id};
 
@@ -155,8 +149,7 @@ sub info {
 }
 
 sub wrl_current {
-    my $self = shift;
-    my %args = @_;
+    my ( $self, %args ) = @_;
 
     return { error => 'id parameter is required' } unless defined $args{id};
 
