@@ -25,16 +25,6 @@ subtest competitor_best_results => sub {
     is $results->[0]{competition}, 'Grand Slam Paris 2013', 'Returns results OK';
 };
 
-subtest general => sub {
-    my $api = $CLASS->new();
-
-    my $info = $api->general->ping;
-
-warn $info;
-
-    ok 1;
-};
-
 done_testing;
 
 =pod
