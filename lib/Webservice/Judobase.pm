@@ -11,6 +11,7 @@ require HTTP::Request;
 require LWP::UserAgent;
 
 use Webservice::Judobase::Competitor;
+use Webservice::Judobase::Contests;
 use Webservice::Judobase::General;
 
 use namespace::clean;
@@ -23,6 +24,11 @@ has 'url' => (
 has 'competitor' => (
     is      => 'ro',
     default => sub { return Webservice::Judobase::Competitor->new },
+);
+
+has 'contests' => (
+    is      => 'ro',
+    default => sub { return Webservice::Judobase::Contests->new },
 );
 
 has 'general' => (

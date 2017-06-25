@@ -16,18 +16,8 @@ $Data::Dumper::Sortkeys = 1;
 my $srv = Webservice::Judobase->new;
 my $event_id = $ARGV[0] || 1455;    # 2017 Europeans
 
-my $event = $srv->general->competition(id => $event_id);
-
-my $base_url = 'http://data.judobase.org/api/get_json?';
-my $contests = decode_json(
-    get(      $base_url
-            . 'params[action]=contest.find'
-            . '&params[id_competition]='
-            . $event_id
-            . '&params[id_weight]=0'
-            . '&params[order_by]=cnum'
-    )
-)->{contests};
+my $event    = $srv->general->competition(id => $event_id);
+my $contests = $srv->contests->competition(id => $event_id);
 
 my %categories;
 
