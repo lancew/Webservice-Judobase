@@ -19,6 +19,8 @@ my $event_id = $ARGV[0] || 1455;    # 2017 Europeans
 my $event    = $srv->general->competition(id => $event_id);
 my $contests = $srv->contests->competition(id => $event_id);
 
+my $base_url = 'http://data.judobase.org/api/get_json?';
+
 my %categories;
 
 my $header =
