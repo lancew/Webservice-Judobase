@@ -17,8 +17,8 @@ subtest valid_params => sub {
 
     is $result,
         {
-        points         => 2800,
-        place          => 1,
+        points         => 2100,
+        place          => 3,
         id_weight      => 7,
         age            => 'Seniors',
         weight         => '+100',
