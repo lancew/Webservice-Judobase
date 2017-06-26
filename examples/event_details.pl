@@ -50,21 +50,8 @@ for ( @{$contests} ) {
         || $_->{round_name} eq 'Bronze'
         || $_->{round_name} eq 'Semi-Final';
 
-    my $athlete_blue = decode_json(
-        get(      $base_url
-                . 'params[action]=competitor.info'
-                . '&params[id_person]='
-                . $_->{id_person_blue}
-        )
-    );
-
-    my $athlete_white = decode_json(
-        get(      $base_url
-                . 'params[action]=competitor.info'
-                . '&params[id_person]='
-                . $_->{id_person_white}
-        )
-    );
+    my $athlete_blue  = $srv->competitor->info(id => $_->{id_person_blue});    
+    my $athlete_white = $srv->competitor->info(id => $_->{id_person_white});
 
     my $wrl_blue = decode_json(
         get(      $base_url
