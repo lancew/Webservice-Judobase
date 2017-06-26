@@ -53,21 +53,8 @@ for ( @{$contests} ) {
     my $athlete_blue  = $srv->competitor->info(id => $_->{id_person_blue});    
     my $athlete_white = $srv->competitor->info(id => $_->{id_person_white});
 
-    my $wrl_blue = decode_json(
-        get(      $base_url
-                . 'params[action]=competitor.wrl_history'
-                . '&params[id_person]='
-                . $_->{id_person_blue}
-        )
-    );
-
-    my $wrl_white = decode_json(
-        get(      $base_url
-                . 'params[action]=competitor.wrl_history'
-                . '&params[id_person]='
-                . $_->{id_person_white}
-        )
-    );
+    my $wrl_blue  = $srv->competitor->wrl_current( id => $_->{id_person_blue})->{points};
+    my $wrl_white = $srv->competitor->wrl_current( id => $_->{id_person_white})->{points};
 
     my @facts;
     push @facts, $_->{weight};
@@ -77,13 +64,13 @@ for ( @{$contests} ) {
         push @facts, $_->{person_blue};
         push @facts, $_->{id_ijf_blue};
         push @facts, $athlete_blue->{birth_date};
-        push @facts, $wrl_blue->[-1]{sum_points};
+        push @facts, $wrl_blue;
         push @facts, $_->{country_blue};
         push @facts, 'Blue';
         push @facts, $_->{person_white};
         push @facts, $_->{id_ijf_white};
         push @facts, $athlete_white->{birth_date};
-        push @facts, $wrl_white->[-1]{sum_points};
+        push @facts, $wrl_white;
         push @facts, $_->{country_white};
         push @facts, 'White';
     }
@@ -91,19 +78,18 @@ for ( @{$contests} ) {
         push @facts, $_->{person_white};
         push @facts, $_->{id_ijf_white};
         push @facts, $athlete_white->{birth_date};
-        push @facts, $wrl_white->[-1]{sum_points};
+        push @facts, $wrl_white;
         push @facts, $_->{country_white};
         push @facts, 'White';
         push @facts, $_->{person_blue};
         push @facts, $_->{id_ijf_blue};
         push @facts, $athlete_blue->{birth_date};
-        push @facts, $wrl_blue->[-1]{sum_points};
+        push @facts, $wrl_blue;
         push @facts, $_->{country_blue};
         push @facts, 'Blue';
     }
 
     say join ',', @facts;
-    #warn Dumper $_;
 }
 
 say '';
