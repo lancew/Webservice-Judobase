@@ -16,29 +16,28 @@ $Data::Dumper::Sortkeys = 1;
 my $srv = Webservice::Judobase->new;
 my $event_id = $ARGV[0] || 1455;    # 2017 Europeans
 
-my $event    = $srv->general->competition(id => $event_id);
-my $contests = $srv->contests->competition(id => $event_id);
+my $event = $srv->general->competition( id => $event_id );
+my $contests = $srv->contests->competition( id => $event_id );
 
 my $base_url = 'http://data.judobase.org/api/get_json?';
 
 my %categories;
 
-my $header =
-    join ',',
+my $header = join ',',
     qw/ category
-        round
-        winner
-        ijf_id_winner
-        dob_winner
-        country_winner
-        wrl_points_winner
-        belt_winner
-        loser
-        ijf_id_loser
-        dob_loser
-        country_loser
-        wrl_points_loser
-        belt_loser/;
+    round
+    winner
+    ijf_id_winner
+    dob_winner
+    country_winner
+    wrl_points_winner
+    belt_winner
+    loser
+    ijf_id_loser
+    dob_loser
+    country_loser
+    wrl_points_loser
+    belt_loser/;
 say $header;
 
 for ( @{$contests} ) {
@@ -50,11 +49,14 @@ for ( @{$contests} ) {
         || $_->{round_name} eq 'Bronze'
         || $_->{round_name} eq 'Semi-Final';
 
-    my $athlete_blue  = $srv->competitor->info(id => $_->{id_person_blue});    
-    my $athlete_white = $srv->competitor->info(id => $_->{id_person_white});
+    my $athlete_blue  = $srv->competitor->info( id => $_->{id_person_blue} );
+    my $athlete_white = $srv->competitor->info( id => $_->{id_person_white} );
 
-    my $wrl_blue  = $srv->competitor->wrl_current( id => $_->{id_person_blue})->{points};
-    my $wrl_white = $srv->competitor->wrl_current( id => $_->{id_person_white})->{points};
+    my $wrl_blue = $srv->competitor->wrl_current( id => $_->{id_person_blue} )
+        ->{points};
+    my $wrl_white
+        = $srv->competitor->wrl_current( id => $_->{id_person_white} )
+        ->{points};
 
     my @facts;
     push @facts, $_->{weight};
