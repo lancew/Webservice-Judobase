@@ -13,7 +13,7 @@ subtest no_params => sub {
 subtest valid_params => sub {
     my $api = $CLASS->new();
 
-    my $result = $api->competitor->birthdays_competitors( min_age => 50 );
+    my $result = $api->competitor->birthdays_competitors( min_age => 5 );
 
     is [sort keys %{$result->{feed}[0]}],
         [
