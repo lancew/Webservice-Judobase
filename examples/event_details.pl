@@ -6,12 +6,7 @@ use v5.10;
 # This example script was developed with Gaert Claes to support his
 # PHD studies researching the results of IJF elite competitions
 
-use LWP::Simple;
-use JSON 'decode_json';
 use Webservice::Judobase;
-
-use Data::Dumper;
-$Data::Dumper::Sortkeys = 1;
 
 my $srv = Webservice::Judobase->new;
 my $event_id = $ARGV[0] || 1455;    # 2017 Europeans
