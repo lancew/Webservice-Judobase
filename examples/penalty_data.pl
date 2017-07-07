@@ -31,8 +31,7 @@ for my $event_id ( 1039 .. 1460 ) {
 
     say join ',', $event->{title} // '',
         $event->{year} // '',
-        $event->{country} // '', $data{white}, $data{blue}
-        or die Dumper \%data;
+        $event->{country} // '', $data{white}, $data{blue};
 }
 
 1;
