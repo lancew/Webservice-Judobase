@@ -20,9 +20,9 @@ subtest status => sub {
 subtest competitor_best_results => sub {
     my $api = $CLASS->new();
 
-    # Best results for Teddy Riner (id 385) 
+    # Best results for Teddy Riner (id 385)
     my $results = $api->competitor->best_results(id => 385);
-    
+
     is $results->[0]{competition}, 'Grand Slam Paris 2013', 'Returns results OK';
 };
 

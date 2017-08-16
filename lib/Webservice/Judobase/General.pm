@@ -3,6 +3,8 @@ package Webservice::Judobase::General;
 use strict;
 use warnings;
 
+# VERSION
+
 use Moo;
 use HTTP::Request;
 use JSON::Tiny 'decode_json';

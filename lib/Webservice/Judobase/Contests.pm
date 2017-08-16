@@ -3,6 +3,8 @@ package Webservice::Judobase::Contests;
 use strict;
 use warnings;
 
+# VERSION
+
 use Moo;
 use HTTP::Request;
 use JSON::Tiny 'decode_json';
