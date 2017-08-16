@@ -69,7 +69,6 @@ subtest europeans_2017 => sub {
           'round' => '3',
           'sc_countdown_offset' => '0',
           'tagged' => '0',
-          'testing_field' => 'test',
           'type' => '0',
           'waza_b' => '0',
           'waza_w' => '2',
