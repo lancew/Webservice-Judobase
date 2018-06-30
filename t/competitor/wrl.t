@@ -13,18 +13,19 @@ subtest no_params => sub {
 subtest valid_params => sub {
     my $api = $CLASS->new();
 
-    my $result = $api->competitor->wrl_current( id => 385 );
+    # https://judobase.ijf.org/#/competitor/profile/7350/wrl
+    my $result = $api->competitor->wrl_current( id => 7350 );
 
     is $result,
         {
-        points         => 1600,
-        place          => 14,
-        id_weight      => 7,
-        age            => 'Seniors',
-        weight         => '+100',
-        ogq_place      => 1,
-        ogq_sum_points => 3150,
-        q_status       => 1,
+        points         => E,
+        place          => E,
+        id_weight      => E,
+        age            => E,
+        weight         => E,
+        ogq_place      => E,
+        ogq_sum_points => E,
+        q_status       => E,
         },
         'Returns data structure for valid competitor';
 };

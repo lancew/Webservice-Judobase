@@ -17,10 +17,10 @@ subtest info_valid_params => sub {
 
     is $info,
         {
-        'age'               => '57',
+        'age'               => E,
         'belt'              => undef,
         'best_result'       => undef,
-        'birth_date'        => '1960-02-22',
+        'birth_date'        => E,
         'categories'        => [ '' ],
         'club'              => undef,
         'coach'             => '',
@@ -43,6 +43,7 @@ subtest info_valid_params => sub {
         'picture_filename' => '1_1488190109.jpg',
         'short_name'        => '',
         'side'              => 0,
+        'status'            => 1,
         'youtube_links'     => undef,
         },
         'Returns data structure for valid competitor';

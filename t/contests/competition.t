@@ -70,6 +70,7 @@ subtest europeans_2017 => sub {
           'sc_countdown_offset' => '0',
           'tagged' => '0',
           'type' => '0',
+          'updated_at' => '2017-04-22 10:13:18',
           'waza_b' => '0',
           'waza_w' => '2',
           'waza' => '2',
