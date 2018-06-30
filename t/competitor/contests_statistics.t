@@ -1,4 +1,4 @@
-use Test2::Bundle::Extended -target => 'Webservice::Judobase';
+use Test2::V0 -target => 'Webservice::Judobase';
 
 subtest no_params => sub {
     my $api = $CLASS->new();
