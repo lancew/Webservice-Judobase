@@ -6,8 +6,8 @@ subtest info_no_params => sub {
     my $info = $api->competitor->info;
 
     is $info,
-        { error => 'id parameter is required' },
-        'Returns error if no ID provided.';
+      { error => 'id parameter is required' },
+      'Returns error if no ID provided.';
 };
 
 subtest info_valid_params => sub {
@@ -15,38 +15,40 @@ subtest info_valid_params => sub {
 
     my $info = $api->competitor->info( id => 1 );
 
+## Please see file perltidy.ERR
     is $info,
-        {
-        'age'               => E,
-        'belt'              => undef,
-        'best_result'       => undef,
-        'birth_date'        => E,
-        'categories'        => [ '' ],
-        'club'              => undef,
-        'coach'             => '',
-        'country_short'     => 'SLO',
-        'country'           => 'Slovenia',
-        'family_name_local' => 'BULC',
-        'family_name'      => 'BULC',
-        'file_flag'         => 'Slovenia.gif',
-        'folder'            => '/2017/02/',
-        'ftechique'         => '',
-        'gender'            => 'male',
-        'given_name_local'  => "Ale\x{161}",
-        'given_name'        => 'Ales',
-        'height'            => 0,
-        'id_country'        => '1',
-        'middle_name_local' => '',
-        'middle_name'       => '',
-        'name'              => '1_1488190109.jpg',
-        'personal_picture' => 'https://www.judobase.org/files/persons//2017/02//1_1488190109.jpg',
-        'picture_filename' => '1_1488190109.jpg',
-        'short_name'        => '',
-        'side'              => 0,
-        'status'            => 1,
-        'youtube_links'     => undef,
-        },
-        'Returns data structure for valid competitor';
+      {
+        age               => E,
+        belt              => undef,
+        best_result       => undef,
+        birth_date        => E,
+        categories        => [''],
+        club              => undef,
+        coach             => '',
+        country_short     => 'SLO',
+        country           => 'Slovenia',
+        family_name_local => 'BULC',
+        family_name       => 'BULC',
+        file_flag         => 'Slovenia.gif',
+        folder            => '/2017/02/',
+        ftechique         => '',
+        gender            => 'male',
+        given_name_local  => "Ale\x{161}",
+        given_name        => 'Ales',
+        height            => 0,
+        id_country        => 1,
+        middle_name_local => '',
+        middle_name       => '',
+        name              => '1_1488190109.jpg',
+        personal_picture =>
+          'https://www.judobase.org/files/persons//2017/02//1_1488190109.jpg',
+        picture_filename => '1_1488190109.jpg',
+        short_name       => '',
+        side             => 0,
+        status           => 1,
+        youtube_links    => undef,
+      },
+      'Returns data structure for valid competitor';
 };
 
 subtest info_not_valid_params => sub {
@@ -55,8 +57,8 @@ subtest info_not_valid_params => sub {
     my $info = $api->competitor->info( id => 0 );
 
     is $info,
-        { error => 'info.error.id_person_not_given', },
-        'Returns error for invalid or not found competitor';
+      { error => 'info.error.id_person_not_given', },
+      'Returns error for invalid or not found competitor';
 };
 
 =pod
