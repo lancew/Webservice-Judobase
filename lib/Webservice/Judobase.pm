@@ -2,7 +2,6 @@ package Webservice::Judobase;
 use strict;
 use warnings;
 
-
 # ABSTRACT: This module wraps the www.judobase.org website API.
 # VERSION
 
@@ -36,10 +35,9 @@ has 'general' => (
     default => sub { return Webservice::Judobase::General->new },
 );
 
-
 sub status {
-    my ($self)    = @_;
-    my $ua      = LWP::UserAgent->new;
+    my ($self) = @_;
+    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $self->url );
 
     my $response = $ua->request($request);

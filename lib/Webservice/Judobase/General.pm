@@ -21,12 +21,12 @@ sub competition {
     my ( $self, %args ) = @_;
     return { error => 'id parameter is required' } unless defined $args{id};
 
-    my $url
-        = $self->url
-        . '?params[action]=general.get_one'
-        . '&params[module]=competition'
-        . '&params[id]='
-        . $args{id};
+    my $url =
+        $self->url
+      . '?params[action]=general.get_one'
+      . '&params[module]=competition'
+      . '&params[id]='
+      . $args{id};
 
     my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
@@ -34,7 +34,7 @@ sub competition {
     my $response = $ua->request($request);
 
     return decode_json $response->content
-        if $response->code == 200;
+      if $response->code == 200;
 
     return { error => 'Error retreiving competitor info' };
 }
