@@ -1,4 +1,4 @@
-use Test2::V0 -target => 'Webservice::Judobase';
+use Test2::V0 -target => 'Webservice::Judobase::Competitor';
 
 subtest url => sub {
     my $api = $CLASS->new();
@@ -10,4 +10,3 @@ subtest url => sub {
 };
 
 done_testing;
-
