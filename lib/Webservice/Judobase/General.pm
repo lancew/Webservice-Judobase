@@ -39,4 +39,24 @@ sub competition {
     return { error => 'Error retreiving competitor info' };
 }
 
+sub competitions {
+    my ( $self, %args ) = @_;
+    
+    my $url =
+        $self->url
+      . '?params[action]=competition.get_list'
+      . '&params[sort]=-1';
+
+    my $ua = LWP::UserAgent->new;
+    my $request = HTTP::Request->new( GET => $url );
+
+    my $response = $ua->request($request);
+
+    return decode_json $response->content
+      if $response->code == 200;
+
+    return { error => 'Error retreiving competitions info' };
+}
+
+
 1;
