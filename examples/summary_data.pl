@@ -23,10 +23,15 @@ my @data;
 # loop through events:
 #        1039 to 1460
 #  Sofia 2009 to Hohhot 2017
-for my $event_id ( 1039 .. 3000 ) {
+my $events = $srv->general->competitions;
+
+for my $competition ( sort @{$events} ) {
     print ".";
+    my $event_id = $competition->{id_competition};
     my $event = $srv->general->competition( id => $event_id );
     next unless defined $event;
+    next unless ref $event eq 'HASH';
+    next unless $event && $event->{ages} && $event->{ages} eq 'Seniors';
 
     my $contests = $srv->contests->competition( id => $event_id );
     next unless scalar @{$contests};
@@ -34,21 +39,22 @@ for my $event_id ( 1039 .. 3000 ) {
     for ( @{$contests} ) {
         my %contest;
         $contest{date}             = $_->{date_raw};
-        $contest{event}            = $_->{competition_name};
-        $contest{athlete_1}        = $_->{person_white};
-        $contest{country_1}        = $_->{country_white};
-        $contest{athlete_2}        = $_->{person_blue};
-        $contest{country_2}        = $_->{country_blue};
+        $contest{category}         = $_->{weight};
         $contest{athlete_1_ippon}  = $_->{ippon_w};
+        $contest{athlete_1_shido}  = $_->{penalty_w};
         $contest{athlete_1_wazari} = $_->{waza_w};
         $contest{athlete_1_yuko}   = $_->{yuko_w};
-        $contest{athlete_1_shido}  = $_->{penalty_w};
+        $contest{athlete_1}        = $_->{person_white};
         $contest{athlete_2_ippon}  = $_->{ippon_b};
+        $contest{athlete_2_shido}  = $_->{penalty_b};
         $contest{athlete_2_wazari} = $_->{waza_b};
         $contest{athlete_2_yuko}   = $_->{yuko_b};
-        $contest{athlete_2_shido}  = $_->{penalty_b};
-        $contest{time}             = $_->{duration};
+        $contest{athlete_2}        = $_->{person_blue};
+        $contest{country_1}        = $_->{country_white};
+        $contest{country_2}        = $_->{country_blue};
+        $contest{event}            = $_->{competition_name};
         $contest{round}            = $_->{round_name};
+        $contest{time}             = $_->{duration};
 
         push @data, \%contest;
     }
@@ -56,7 +62,7 @@ for my $event_id ( 1039 .. 3000 ) {
 }
 
 #say Dumper \@data;
-my $err = csv( in => \@data, out => "summary_data.csv" );
+my $err = csv( in => \@data, out => "summary_data.csv", encoding => "UTF-8" );
 
 warn $err if $err != 1;
 
