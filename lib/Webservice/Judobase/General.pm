@@ -45,6 +45,7 @@ sub competitions {
     my $url =
         $self->url
       . '?params[action]=competition.get_list'
+      . '&params[limit]=9999'
       . '&params[sort]=-1';
 
     my $ua = LWP::UserAgent->new;
