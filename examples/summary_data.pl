@@ -29,11 +29,18 @@ for my $competition ( sort @{$events} ) {
     print ".";
     my $event_id = $competition->{id_competition};
     my $event = $srv->general->competition( id => $event_id );
+
+
+
+
+
     next unless defined $event;
     next unless ref $event eq 'HASH';
     next unless $event && $event->{ages} && $event->{ages} eq 'Seniors';
 
     my $contests = $srv->contests->competition( id => $event_id );
+
+
     next unless scalar @{$contests};
 
     for ( @{$contests} ) {
@@ -55,6 +62,16 @@ for my $competition ( sort @{$events} ) {
         $contest{event}            = $_->{competition_name};
         $contest{round}            = $_->{round_name};
         $contest{time}             = $_->{duration};
+        $contest{contest_code}     = $_->{contest_code_long};
+        
+        if ($_->{id_winner} == $_->{id_person_white}) {
+            $contest{winner} = $_->{person_white};
+            $contest{loser} = $_->{person_blue};
+        } else {
+            $contest{loser} = $_->{person_white};
+            $contest{winner} = $_->{person_blue};
+        }
+
 
         push @data, \%contest;
     }
