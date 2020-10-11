@@ -27,6 +27,7 @@ sub competition {
       . '?params[action]=contest.find'
       . '&params[id_weight]=0'
       . '&params[order_by]=cnum'
+      . '&params[limit]=9999'
       . '&params[id_competition]='
       . $args{id};
 
