@@ -14,9 +14,18 @@ use Moo;
 #extends 'Webservice::Judobase';
 use namespace::clean;
 
+has 'ua' => (
+  is => 'lazy',
+  default => sub{
+    my $ua = LWP::UserAgent->new;
+    $ua->agent("WebServiceJudobase/0.1 ");
+    return $ua;
+  },
+);
+
 has 'url' => (
     is      => 'ro',
-    default => 'http://data.judobase.org/api/',
+    default => 'http://data.ijf.org/api/',
 );
 
 sub best_results {
@@ -28,10 +37,9 @@ sub best_results {
       . 'get_json?params[action]=competitor.best_results&params[id_person]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json $response->content
       if $response->code == 200;
@@ -49,10 +57,9 @@ sub birthdays_competitors {
       . 'get_json?params[action]=competitor.birthday_competitors&params[min_age]='
       . $args{min_age};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json $response->content
       if $response->code == 200;
@@ -69,10 +76,9 @@ sub contests {
       . 'get_json?params[action]=competitor.contests&params[id_person]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json $response->content
       if $response->code == 200;
@@ -90,10 +96,9 @@ sub contests_statistics {
       . 'get_json?params[action]=competitor.contests_statistics&params[id_person]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json $response->content
       if $response->code == 200;
@@ -112,10 +117,9 @@ sub fights_statistics {
       . 'get_json?params[action]=competitor.fights_statistics&params[id_person]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     if ( $response->code == 200 ) {
         my $data = decode_json $response->content;
@@ -137,10 +141,9 @@ sub info {
       . 'get_json?params[action]=competitor.info&params[id_person]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json $response->content
       if $response->code == 200;
@@ -158,10 +161,9 @@ sub wrl_current {
       . 'get_json?params[action]=competitor.wrl_current&params[id_person]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     if ( $response->code == 200 ) {
         my $data = decode_json $response->content;

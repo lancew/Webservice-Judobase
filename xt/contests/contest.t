@@ -286,7 +286,7 @@ subtest CHKHVIMIANI_LAI_WORLDS_2019 => sub {
             ],
 
             'person_blue'             => 'LAI Yiu Long',
-            'timestamp_version_white' => 'v1550581155',
+            'timestamp_version_white' => 'v1608548799',
             'comp_year'               => '2019',
             'given_name_blue'         => 'Yiu Long',
             'published'               => '1',

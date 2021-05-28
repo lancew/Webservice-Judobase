@@ -17,7 +17,16 @@ use namespace::clean;
 
 has 'url' => (
     is      => 'ro',
-    default => 'http://data.judobase.org/api/',
+    default => 'http://data.ijf.org/api/',
+);
+
+has 'ua' => (
+  is => 'lazy',
+  default => sub{
+    my $ua = LWP::UserAgent->new;
+    $ua->agent("WebServiceJudobase/0.1 ");
+    return $ua;
+  },
 );
 
 has 'competitor' => (
@@ -40,7 +49,7 @@ sub status {
     my $ua = LWP::UserAgent->new;
     my $request = HTTP::Request->new( GET => $self->url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return $response->code == 200 ? 1 : 0;
 }

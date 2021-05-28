@@ -14,7 +14,16 @@ use namespace::clean;
 
 has 'url' => (
     is      => 'ro',
-    default => 'http://data.judobase.org/api/get_json',
+    default => 'http://data.ijf.org/api/get_json',
+);
+
+has 'ua' => (
+  is => 'lazy',
+  default => sub{
+    my $ua = LWP::UserAgent->new;
+    $ua->agent("WebServiceJudobase/0.1 ");
+    return $ua;
+  },
 );
 
 sub competition {
@@ -31,10 +40,10 @@ sub competition {
       . '&params[id_competition]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
+    
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json( $response->content )->{contests}
       if $response->code == 200;
@@ -57,10 +66,10 @@ sub contest {
       . '&params[contest_code]='
       . $args{id};
 
-    my $ua = LWP::UserAgent->new;
+
     my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $ua->request($request);
+    my $response = $self->ua->request($request);
 
     return decode_json( $response->content )->{contests}
       if $response->code == 200;
