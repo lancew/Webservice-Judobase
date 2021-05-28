@@ -29,7 +29,7 @@ sub best_results {
 
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.best_results&params[id_person]='
+        . '?params[action]=competitor.best_results&params[id_person]='
         . $args{id};
 
     my $request = HTTP::Request->new( GET => $url );
@@ -49,7 +49,7 @@ sub birthdays_competitors {
         unless defined $args{min_age};
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.birthday_competitors&params[min_age]='
+        . '?params[action]=competitor.birthday_competitors&params[min_age]='
         . $args{min_age};
 
     my $request = HTTP::Request->new( GET => $url );
@@ -68,7 +68,7 @@ sub contests {
     return { error => 'id parameter is required' } unless defined $args{id};
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.contests&params[id_person]='
+        . '?params[action]=competitor.contests&params[id_person]='
         . $args{id};
 
     my $request = HTTP::Request->new( GET => $url );
@@ -88,7 +88,7 @@ sub contests_statistics {
     return { error => 'id parameter is required' } unless defined $args{id};
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.contests_statistics&params[id_person]='
+        . '?params[action]=competitor.contests_statistics&params[id_person]='
         . $args{id};
 
     my $request = HTTP::Request->new( GET => $url );
@@ -109,7 +109,7 @@ sub fights_statistics {
 
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.fights_statistics&params[id_person]='
+        . '?params[action]=competitor.fights_statistics&params[id_person]='
         . $args{id};
 
     my $request = HTTP::Request->new( GET => $url );
@@ -133,7 +133,7 @@ sub info {
 
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.info&params[id_person]='
+        . '?params[action]=competitor.info&params[id_person]='
         . $args{id};
 
     my $request = HTTP::Request->new( GET => $url );
@@ -153,7 +153,7 @@ sub wrl_current {
 
     my $url
         = $self->url
-        . 'get_json?params[action]=competitor.wrl_current&params[id_person]='
+        . '?params[action]=competitor.wrl_current&params[id_person]='
         . $args{id};
 
     my $request = HTTP::Request->new( GET => $url );

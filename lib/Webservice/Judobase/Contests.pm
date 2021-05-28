@@ -12,18 +12,14 @@ use LWP::UserAgent;
 
 use namespace::clean;
 
-has 'url' => (
-    is      => 'ro',
-    default => 'http://data.ijf.org/api/get_json',
+has 'ua' => (
+    is       => 'ro',
+    required => 1,
 );
 
-has 'ua' => (
-  is => 'lazy',
-  default => sub{
-    my $ua = LWP::UserAgent->new;
-    $ua->agent("WebServiceJudobase/0.1 ");
-    return $ua;
-  },
+has 'url' => (
+    is       => 'ro',
+    required => 1,
 );
 
 sub competition {

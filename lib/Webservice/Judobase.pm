@@ -15,7 +15,7 @@ use Webservice::Judobase::General;
 
 use namespace::clean;
 
-my $url = 'http://data.ijf.org/api/';
+my $url = 'http://data.ijf.org/api/get_json';
 my $ua  = LWP::UserAgent->new;
 $ua->agent("WebServiceJudobase/0.1 ");
 
@@ -31,12 +31,18 @@ has 'competitor' => (
 
 has 'contests' => (
     is      => 'ro',
-    default => sub { return Webservice::Judobase::Contests->new },
+    default => sub { return Webservice::Judobase::Contests->new(
+            ua  => $ua,
+            url => $url,
+        ); },
 );
 
 has 'general' => (
     is      => 'ro',
-    default => sub { return Webservice::Judobase::General->new },
+    default => sub { return Webservice::Judobase::General->new(
+            ua  => $ua,
+            url => $url,
+        ); },
 );
 
 sub status {
