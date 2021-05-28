@@ -15,23 +15,18 @@ use Webservice::Judobase::General;
 
 use namespace::clean;
 
-has 'url' => (
-    is      => 'ro',
-    default => 'http://data.ijf.org/api/',
-);
-
-has 'ua' => (
-  is => 'lazy',
-  default => sub{
-    my $ua = LWP::UserAgent->new;
-    $ua->agent("WebServiceJudobase/0.1 ");
-    return $ua;
-  },
-);
+my $url = 'http://data.ijf.org/api/';
+my $ua  = LWP::UserAgent->new;
+$ua->agent("WebServiceJudobase/0.1 ");
 
 has 'competitor' => (
     is      => 'ro',
-    default => sub { return Webservice::Judobase::Competitor->new },
+    default => sub {
+        return Webservice::Judobase::Competitor->new(
+            ua  => $ua,
+            url => $url,
+        );
+    },
 );
 
 has 'contests' => (
@@ -45,11 +40,11 @@ has 'general' => (
 );
 
 sub status {
-    my ($self) = @_;
-    my $ua = LWP::UserAgent->new;
-    my $request = HTTP::Request->new( GET => $self->url );
+    my ($self)  = @_;
+    my $ua      = LWP::UserAgent->new;
+    my $request = HTTP::Request->new( GET => $url );
 
-    my $response = $self->ua->request($request);
+    my $response = $ua->request($request);
 
     return $response->code == 200 ? 1 : 0;
 }
