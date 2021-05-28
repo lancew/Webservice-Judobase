@@ -5,7 +5,7 @@ subtest url => sub {
 
     my $url = $api->url;
 
-    is $url, 'http://data.judobase.org/api/',
+    is $url, 'http://data.ijf.org/api/',
         'Returns the correct default url';
 };
 
