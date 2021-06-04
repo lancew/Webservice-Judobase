@@ -26,9 +26,14 @@ Lance Wicks <lancew@cpan.org>
 
 =head1 CONTRIBUTORS
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT
 
 This software is Copyright (c) 2016 by Lance Wicks.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
+See the LICENSE file in the distribution on CPAN for full text.
 
 =head1 SEE ALSO
 
