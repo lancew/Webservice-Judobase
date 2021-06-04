@@ -31,18 +31,22 @@ has 'competitor' => (
 
 has 'contests' => (
     is      => 'ro',
-    default => sub { return Webservice::Judobase::Contests->new(
+    default => sub {
+        return Webservice::Judobase::Contests->new(
             ua  => $ua,
             url => $url,
-        ); },
+        );
+    },
 );
 
 has 'general' => (
     is      => 'ro',
-    default => sub { return Webservice::Judobase::General->new(
+    default => sub {
+        return Webservice::Judobase::General->new(
             ua  => $ua,
             url => $url,
-        ); },
+        );
+    },
 );
 
 sub status {
