@@ -23,6 +23,30 @@ has 'url' => (
     required => 1,
 );
 
+sub competitors_list {
+    my ( $self, %args ) = @_;
+    return { error => 'id_country parameter is required' } unless defined $args{id_country};
+    return { error => 'id_country parameter must be an integer' } unless ($args{id_country} =~ /\d+/);
+
+     my $url
+        = $self->url
+        . '?params[action]=country.competitors_list'
+        . '&params[id_country]='
+        . $args{id_country};
+
+     my $request = HTTP::Request->new( GET => $url );
+     my $response = $self->ua->request($request);   
+
+    if ( $response->code == 200 ) {
+        my $data = decode_json $response->content;
+
+        return $data->{competitors};
+    }
+
+    return { error => 'Error retreiving country info' };
+
+}
+
 
 sub get_list {
     my ( $self, %args ) = @_;
@@ -40,7 +64,7 @@ sub get_list {
         return $data;
     }
 
-    return { error => 'Error retreiving competitor info' };
+    return { error => 'Error retreiving country info' };
 }
 
 
