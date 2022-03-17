@@ -62,4 +62,40 @@ sub competitions {
     return { error => 'Error retreiving competitions info' };
 }
 
+sub competitors {
+    my ( $self, %args ) = @_;
+    return { error => 'event_id parameter is required' } unless defined $args{event_id};
+
+    my $url
+        = $self->url
+        . '?params[action]=competition.competitors'
+        . '&params[id_competition]='
+        . $args{event_id};
+
+    my $request = HTTP::Request->new( GET => $url );
+
+    my $response = $self->ua->request($request);
+
+    my @competitors =();
+    if ($response->code == 200) {
+        my $info = decode_json $response->content;
+
+        for my $gender (values %{$info->{categories}}) {
+            for my $cat (values %$gender) {
+               for my $person (values %{$cat->{persons}}) {
+                   push @competitors, $person;
+               }
+            }
+        }
+
+        return \@competitors;
+    } else {
+        return { error => 'Error retreiving competitors info' };
+    }
+}
+
+
+
+
+
 1;
