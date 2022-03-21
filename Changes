@@ -1,5 +1,8 @@
 Revision history for perl module Webservice::Judobase
 
+0.05 2022-03-21
+  - Add method to get all athletes from competition
+
 0.04 2021-06-04
 
   - Changes to address changes in the API
