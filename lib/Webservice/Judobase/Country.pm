@@ -1,7 +1,7 @@
-package Webservice::Judobase::Country;
-
 use strict;
 use warnings;
+
+package Webservice::Judobase::Country;
 
 # ABSTRACT: This module wraps the www.judobase.org website API.
 # VERSION
@@ -35,7 +35,7 @@ sub competitors_list {
         . $args{id_country};
 
      my $request = HTTP::Request->new( GET => $url );
-     my $response = $self->ua->request($request);   
+     my $response = $self->ua->request($request);
 
     if ( $response->code == 200 ) {
         my $data = decode_json $response->content;
@@ -49,7 +49,7 @@ sub competitors_list {
 
 
 sub get_list {
-    my ( $self, %args ) = @_;
+    my $self = shift;
     my $url
         = $self->url
         . '?params[action]=country.get_list';

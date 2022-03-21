@@ -1,7 +1,7 @@
-package Webservice::Judobase::Contests;
-
 use strict;
 use warnings;
+
+package Webservice::Judobase::Contests;
 
 # VERSION
 

@@ -1,7 +1,7 @@
-package Webservice::Judobase::General;
-
 use strict;
 use warnings;
+
+package Webservice::Judobase::General;
 
 # VERSION
 

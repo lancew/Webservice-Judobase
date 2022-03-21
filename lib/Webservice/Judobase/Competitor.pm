@@ -1,7 +1,7 @@
-package Webservice::Judobase::Competitor;
-
 use strict;
 use warnings;
+
+package Webservice::Judobase::Competitor;
 
 # ABSTRACT: This module wraps the www.judobase.org website API.
 # VERSION
