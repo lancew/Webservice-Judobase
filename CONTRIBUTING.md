@@ -29,4 +29,3 @@ If you'd like to fibd something to work on, or report something that
 does not work, or might be good to add, look at the issues page.
 Documentation changes are always appreciated.
 
-

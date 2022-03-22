@@ -1,5 +1,10 @@
 Revision history for perl module Webservice::Judobase
 
+0.07 2022-03-22
+  - Add a contributing guide
+  - Add Test2::V0 as a prereq for testing
+  - Add MANIFEST.SKIP to prevent bloat
+
 0.06 2022-03-21
   - Dist::Zilla updates
   - POD updates
