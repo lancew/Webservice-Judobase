@@ -25,6 +25,7 @@ subtest competitions => sub {
           'id_competition' => E,
           'id_country' => E,
           'id_live_theme' => E,
+          'is_teams' => E,
           'name' => E,
           'prime_event' => E,
           'rank_name' => E,
