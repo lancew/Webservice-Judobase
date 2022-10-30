@@ -18,7 +18,7 @@ subtest CHKHVIMIANI_LAI_WORLDS_2019 => sub {
     is $result, [
         {
 
-            'weight' => '-60',
+            'weight'                 => '-60',
             'personal_picture_white' =>
                 'https://www.judobase.org/files/persons//2019/02//15116_1550581155.jpg',
             'picture_filename_1' => '15116_1550581155.jpg',
@@ -43,8 +43,7 @@ subtest CHKHVIMIANI_LAI_WORLDS_2019 => sub {
             'ippon'               => '1',
             'round_name'          => 'Round 1',
             'medias'              => [
-                {   
-                    'camera_short'         => 'front',
+                {   'camera_short'         => 'front',
                     'camera'               => 'Front',
                     'contest_code'         => 'wc_sen2019_m_0060_0010',
                     'contest_start_offset' => '16',
@@ -307,7 +306,7 @@ subtest CHKHVIMIANI_LAI_WORLDS_2019 => sub {
             'competition_date'        => '2019-08-25',
             'kodokan_tagged'          => '2',
             'bye'                     => '0',
-            'personal_picture_blue' =>
+            'personal_picture_blue'   =>
                 'https://www.judobase.org/files/persons//2019/12//34360_1577212241.jpg',
             'date_start_ts'      => '1566698879506',
             'waza_b'             => '0',
