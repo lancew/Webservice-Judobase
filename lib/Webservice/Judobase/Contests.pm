@@ -7,7 +7,7 @@ package Webservice::Judobase::Contests;
 
 use Moo;
 use HTTP::Request;
-use JSON::Tiny 'decode_json';
+use JSON::MaybeXS 'decode_json';
 use LWP::UserAgent;
 
 use namespace::clean;

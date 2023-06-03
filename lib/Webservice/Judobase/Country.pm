@@ -7,7 +7,7 @@ package Webservice::Judobase::Country;
 # VERSION
 
 use HTTP::Request;
-use JSON::Tiny 'decode_json';
+use JSON::MaybeXS 'decode_json';
 use Moo;
 
 #extends 'Webservice::Judobase';
