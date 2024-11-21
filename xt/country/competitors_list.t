@@ -21,7 +21,7 @@ subtest bad_id => sub {
 subtest good_list => sub {
     my $result = $api->country->competitors_list( id_country => 138 );
 
-    is scalar keys %$result, 2, 'Number of athletes listed should be 2';
+    is scalar keys %$result, 4, 'Number of athletes listed should be 4';
 
     is $result->{9730},
         {
