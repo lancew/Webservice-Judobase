@@ -3,7 +3,7 @@
 
 =head1 NAME
 
-Webservice::Judobase - Access the www.judobase.org API in perl.
+Webservice::Judobase - Access the www.judobase.org API in perl. This module helps you to work with the Judo data from the International Judo Federation (IJF).
 
 =for HTML
 <a href=https://travis-ci.org/lancew/Webservice-Judobase><img src=https://api.travis-ci.org/lancew/Webservice-Judobase.svg?branch=master></a>
@@ -13,8 +13,7 @@ Webservice::Judobase - Access the www.judobase.org API in perl.
 
 =head1 DESCRIPTION
 
-Simple wrapper around the www.judobase.org API to make working with the
-Judobase API easier
+Simple wrapper around the www.judobase.org API to make working with the IJF Judo data easier via the Judobase API.
 
 =head1 SYNOPSIS
 
